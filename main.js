@@ -23,6 +23,7 @@ $(document).ready(function() {
       }
       $('#address').val('');
       if (markers.length === 2) {
+        $('.submit').attr('disabled', true);
         getBars();
       }
     });
@@ -52,10 +53,25 @@ $(document).ready(function() {
   function getBars() {
     $.get(makeRequest(), function(data) {
       var bars = data.response.groups[0].items;
-      var firstBar = bars[0].venue;
-      map.setCenter(new google.maps.LatLng(firstBar.location.lat, firstBar.location.lng));
-      createMarker(firstBar.name);
+      var firstBar = bars[0];
+      map.setCenter(new google.maps.LatLng(firstBar.venue.location.lat, firstBar.venue.location.lng));
+      for (var i in bars) {
+        createMarker(bars[i].name);
+        displayBar(bars[i]);
+      }
     });
+  }
+
+  function displayBar(bar) {
+    $('.results').append("<h4 class='bar-name'></h4>" +
+                          "<p class='bar-description'></p>" +
+                          "<p class='bar-address'></p>" +
+                          "<p class='bar-tip italic'></p>");
+
+    $('.bar-name:last').html(bar.venue.name);
+    $('.bar-description:last').html(bar.reasons.items[0].summary);
+    $('.bar-address:last').html(bar.venue.location.formattedAddress.join(', '));
+    $('.bar-tip:last').html(bar.tips[0].text);
   }
 
   $('#address').change(function() {

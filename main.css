@@ -1,0 +1,28 @@
+.no-margin-top {
+  margin-top: 0;
+}
+
+.small-margin-bottom {
+  margin-bottom: 5px;
+}
+
+.medium-padding {
+  padding: 10px;
+}
+
+.main-body {
+
+}
+
+#map {
+  width: 100%;
+  height: 500px;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.results {
+  margin-top: 30px;
+}
