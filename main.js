@@ -5,6 +5,14 @@ var map;
 $(document).ready(function() {
   setupMap();
 
+  $('#address').keyup(function() {
+    if ($(this).val().length > 0) {
+      $('.submit').attr('disabled', false);
+    } else {
+      $('.submit').attr('disabled', true);
+    }
+  });
+
   function setupMap() {
     map = new google.maps.Map(document.getElementById('map'), {
       center: { lat: 51.498848, lng: -0.281128 },
@@ -98,7 +106,8 @@ $(document).ready(function() {
     markers = [];
     $('.locations').empty();
     $('.results').empty();
-    $('.submit').attr('disabled', false);
+    $('.submit').attr('disabled', true);
+    $('#address').val('');
     map.setCenter(new google.maps.LatLng(51.498848,-0.281128));
   }
 
