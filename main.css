@@ -1,3 +1,7 @@
+body {
+  background-image: url(background.jpg);
+}
+
 .no-margin-top {
   margin-top: 0;
 }
@@ -10,10 +14,6 @@
   padding: 10px;
 }
 
-.main-body {
-
-}
-
 #map {
   width: 100%;
   height: 500px;
@@ -23,6 +23,19 @@
   font-style: italic;
 }
 
-.results {
-  margin-top: 30px;
+.page-header {
+  border-bottom: 0;
+  text-align: center;
+}
+
+.results-box {
+  margin-left: 10px;
+}
+
+.highlight-box {
+  -webkit-box-shadow: inset 0 0 5px 5px rgba(5,5,5,1);
+  -moz-box-shadow: inset 0 0 5px 5px rgba(5,5,5,1);
+  background-color: lightgray;
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px 5px rgba(5,5,5,1);
 }
