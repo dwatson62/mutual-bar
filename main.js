@@ -60,13 +60,21 @@ $(document).ready(function() {
   function getBars() {
     $.get(makeRequest(), function(data) {
       var bars = data.response.groups[0].items;
-      var firstBar = bars[0];
-      map.setCenter(new google.maps.LatLng(firstBar.venue.location.lat, firstBar.venue.location.lng));
-      for (var i in bars) {
-        createMarker(bars[i].name);
-        displayBar(bars[i]);
+      if (bars.length) {
+        var firstBar = bars[0];
+        map.setCenter(new google.maps.LatLng(firstBar.venue.location.lat, firstBar.venue.location.lng));
+        for (var i in bars) {
+          createMarker(bars[i].name);
+          displayBar(bars[i]);
+        }
+      } else {
+        noResults();
       }
     });
+  }
+
+  function noResults() {
+    $('.results').append("<p>No bars were found, please try again.</p>");
   }
 
   function displayBar(bar) {
